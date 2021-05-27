@@ -11,13 +11,13 @@ class UsersController extends Controller
         if($store_id){
             $items = DB::table('stores')->where('id',$store_id)->get();
             return response()->json([
-                'message' => 'User got successfully',
+                'message' => 'Store got successfully',
                 'data' => $items
             ], 200);
         }else{
             $items = DB::table('stores')->get();
             return response()->json([
-                'message' => 'User got successfully',
+                'message' => 'Store got successfully',
                 'data' => $items
             ], 200);
         }
