@@ -18,7 +18,8 @@ Route::post('/v1/reservitions', [FavoritesController::class, 'post']);
 Route::get('/v1/user', [UsersController::class, 'get']);
 Route::get('/v1/favorites/{user_id}', [FavoritesController::class, 'get']);
 Route::get('/v1/reservations/{user_id}', [ReservationsController::class, 'get']);
-Route::get('/v1/stores/{store_id?}', [StoresController::class, 'get']);
+Route::get('/v1/stores', [StoresController::class, 'get'])->name('storeget');
+Route::get('/v1/stores/{store_id}', [StoresController::class, 'get'])->name('storedata');
 
 Route::delete('/v1/favorites/{user_id}', [FavoritesController::class, 'delete']);
 Route::delete('/v1/reservations/{user_id}', [ReservationsController::class, 'delete']);

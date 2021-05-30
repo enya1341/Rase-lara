@@ -3,25 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    public function get($store_id)
+
+    public function storeget()
     {
-        if($store_id){
-            $items = DB::table('stores')->where('id',$store_id)->get();
-            return response()->json([
-                'message' => 'Store got successfully',
-                'data' => $items
-            ], 200);
-        }else{
             $items = DB::table('stores')->get();
             return response()->json([
                 'message' => 'Store got successfully',
                 'data' => $items
             ], 200);
-        }
 
+    }
+
+    public function storedata($store_id)
+    {
+            $items = DB::table('stores')->where('id', $store_id)->get();
+            return response()->json([
+                'message' => 'Storedata got successfully',
+                'data' => $items
+            ], 200);
     }
 
 }
