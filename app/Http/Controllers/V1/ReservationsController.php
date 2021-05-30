@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
+
 class ReservationsController extends Controller
 {
     public function post(Request $request)
@@ -26,10 +27,10 @@ class ReservationsController extends Controller
 
     public function get(Request $request)
     {
-        $items = DB::table('Reservations')->where('user_id', $request->user_id)->get();
+        $reservations_use_userid = DB::table('Reservations')->where('user_id', $request->user_id)->get();
         return response()->json([
             'message' => 'Reservation got successfully',
-            'data' => $items
+            'data' => $reservations_use_userid
         ], 200);
     }
 
