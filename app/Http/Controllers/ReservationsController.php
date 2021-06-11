@@ -9,12 +9,12 @@ use Carbon\Carbon;
 
 class ReservationsController extends Controller
 {
-    public function post(Request $request)
+    public function put(Request $request)
     {
         $now = Carbon::now();
         $param = [
-            "time" => $request->time,
             "day" => $request->day,
+            "number" => $request->number,
             "created_at" => $now,
             "updated_at" => $now
         ];

@@ -19,6 +19,7 @@ class CreateStoresTable extends Migration
             $table->string('region');
             $table->string('genre');
             $table->string('overview');
+            $table->string('image');
             $table->timestamps();
         });
     }

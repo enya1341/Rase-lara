@@ -1,25 +1,34 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\V1\FavoritesController;
-use App\Http\Controllers\V1\LoginController;
-use App\Http\Controllers\V1\LogoutController;
-use App\Http\Controllers\V1\RegisterController;
-use App\Http\Controllers\V1\ReservationsController;
-use App\Http\Controllers\V1\StoresController;
-use App\Http\Controllers\V1\UsersController;
+use App\Http\Controllers\FavoritesController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReservationsController;
+use App\Http\Controllers\StoresController;
+use App\Http\Controllers\UsersController;
 
-Route::post('/v1/users/register', [RegisterController::class, 'post']);
-Route::post('/v1/login', [LoginController::class, 'post']);
-Route::post('/v1/logout', [LogoutController::class, 'post']);
-Route::post('/v1/favorites', [FavoritesController::class, 'post']);
-Route::post('/v1/reservitions', [FavoritesController::class, 'post']);
 
-Route::get('/v1/user', [UsersController::class, 'get']);
-Route::get('/v1/favorites/{user_id}', [FavoritesController::class, 'get']);
-Route::get('/v1/reservations/{user_id}', [ReservationsController::class, 'get']);
-Route::get('/v1/stores', [StoresController::class, 'get'])->name('storeget');
-Route::get('/v1/stores/{store_id}', [StoresController::class, 'get'])->name('storedata');
+Route::post('/v1/users/registration', [RegisterController::class, 'post']);
 
-Route::delete('/v1/favorites/{user_id}', [FavoritesController::class, 'delete']);
-Route::delete('/v1/reservations/{user_id}', [ReservationsController::class, 'delete']);
+
+Route::post('/v1/users/login', [LoginController::class, 'post']);
+Route::post('/v1/users/logout', [LogoutController::class, 'post']);
+
+
+Route::get('/v1/users/{user_id}', [UsersController::class, 'get']);
+Route::get('/v1/{user_id}/favorites', [FavoritesController::class, 'get']);
+Route::get('/v1/{user_id}/reservations', [ReservationsController::class, 'get']);
+
+
+Route::get('/v1/stores', [StoresController::class, 'storeget'])->name('storeget');
+Route::get('/v1/{store_id}/stores', [StoresController::class, 'storedata'])->name('storedata');
+
+
+Route::post('/v1/{store_id}/favorites', [FavoritesController::class, 'post']);
+Route::delete('/v1/{store_id}/favorites', [FavoritesController::class, 'delete']);
+
+
+Route::put('/v1/{store_id}/reservitions', [FavoritesController::class, 'post']);
+Route::delete('/v1/{reservation_id}/reservations', [ReservationsController::class, 'delete']);
