@@ -23,7 +23,8 @@ class RegisterController extends Controller
         DB::table('users')->insert($param);
         return response()->json([
             'message' => 'Register created successfully',
-            'data' => $param
+            'data' => $param,
+            'auth' => true
         ], 200);
     }
 }
