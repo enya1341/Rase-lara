@@ -22,7 +22,7 @@ class RegisterController extends Controller
         ];
         DB::table('users')->insert($param);
         return response()->json([
-            'message' => 'User created successfully',
+            'message' => 'Register created successfully',
             'data' => $param
         ], 200);
     }
