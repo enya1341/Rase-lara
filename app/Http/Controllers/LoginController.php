@@ -11,7 +11,7 @@ class LoginController extends Controller
     public function post(Request $request)
     {  
         
-        $items = DB::table('users')->where('email', $request->email)->where('password',$request->password)->first();
+        $items = DB::table('users')->where('email', $request->email)->first();
         if (Hash::check($request->password, $items->password)) {
             return response()->json(['auth' => true], 200);
         } else {
