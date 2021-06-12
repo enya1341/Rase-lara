@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
-class UsersController extends Controller
+class StoresController extends Controller
 {
 
     public function storeget()
     {
             $items = DB::table('stores')->get();
+            Log::debug($items);
             return response()->json([
                 'message' => 'Store got successfully',
                 'data' => $items
             ], 200);
+
 
     }
 

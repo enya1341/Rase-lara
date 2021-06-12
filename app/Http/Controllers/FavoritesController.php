@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 
-class LikesController extends Controller
+class FavoritesController extends Controller
 {
-    public function post(Request $request)
+    public function post()
     {
         $COMMENT = "Favorites created successfully";
         $now = Carbon::now();
