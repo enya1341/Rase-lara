@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class LikesController extends Controller
+class FavoritesController extends Controller
 {
-    public function post(Request $request)
+    public function post()
     {
         $now = Carbon::now();
         $param = [
