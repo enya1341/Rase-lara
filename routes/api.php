@@ -17,7 +17,7 @@ Route::post('/v1/users/login', [LoginController::class, 'post']);
 Route::post('/v1/users/logout', [LogoutController::class, 'post']);
 
 
-Route::get('/v1/users/{user_id}', [UsersController::class, 'get']);
+Route::get('/v1/users', [UsersController::class, 'get']);
 Route::get('/v1/{user_id}/favorites', [FavoritesController::class, 'get']);
 Route::get('/v1/{user_id}/reservations', [ReservationsController::class, 'get']);
 
