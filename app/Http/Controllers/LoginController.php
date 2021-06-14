@@ -17,7 +17,7 @@ class LoginController extends Controller
         if ($items && Hash::check($password, $items->password)) {
             return response()->json(['auth' => true], 200);
         } else {
-            return response()->json(['auth' => false ,$items], 200) ;
+            return response()->json(['auth' => false ,$items,$email,$password], 200) ;
         }
     }
 }
