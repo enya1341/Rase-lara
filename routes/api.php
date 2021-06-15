@@ -30,5 +30,5 @@ Route::post('/v1/{store_id}/favorites', [FavoritesController::class, 'post']);
 Route::delete('/v1/{store_id}/favorites', [FavoritesController::class, 'delete']);
 
 
-Route::put('/v1/{store_id}/reservitions', [FavoritesController::class, 'post']);
+Route::put('/v1/{store_id}/reservations', [FavoritesController::class, 'post']);
 Route::delete('/v1/{reservation_id}/reservations', [ReservationsController::class, 'delete']);
