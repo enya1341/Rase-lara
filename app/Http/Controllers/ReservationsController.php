@@ -9,7 +9,7 @@ use Carbon\Carbon;
 
 class ReservationsController extends Controller
 {
-    public function put($store_id,Request $request)
+    public function put($store_id, Request $request)
     {
         $now = Carbon::now();
         $param = [
