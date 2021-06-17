@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-class UsersTableSeeder extends Seeder
+class ReservationsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,10 +15,11 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'name' => 'test',
-            'email' => 'ryuusei.y8286337@gmail.com',
-            'password' => Hash::make('test')
+            'user_id' => 1,
+            'store_id' => 15,
+            'day' => '2020-07-08 22:00:00',
+            'number' => "2",
         ];
-        DB::table('users')->insert($param);
+        DB::table('reservations')->insert($param);
     }
 }
