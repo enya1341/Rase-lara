@@ -29,14 +29,27 @@ class ReservationsController extends Controller
 
     public function get(Request $request)
     {
+        $count = 1;
+        $params =array();
         $reservations_use_userid = DB::table('Reservations')->where('user_id', $request->user_id)->get();
         foreach($reservations_use_userid as $reservation){
             $datetime = preg_split('/["\s]/', $reservation->day);
-            $params = [
-                'reservations'   => $reservations_use_userid,
-                'date' => $datetime[0],
-                'time' => $datetime[1]
-            ];
+            if($count==1){
+                $params = [
+                    'reservations'   => $reservation,
+                    'date' => $datetime[0],
+                    'time' => $datetime[1]
+                ];
+                $count++;
+            }else{
+                $params += array(
+                    'reservations' => $reservation,
+                    'date' => $datetime[0],
+                    'time' => $datetime[1]
+                );
+
+            }
+
         }
         return response()->json([
             'message' => 'Reservation got successfully',
