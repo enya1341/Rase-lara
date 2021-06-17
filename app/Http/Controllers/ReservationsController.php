@@ -30,12 +30,12 @@ class ReservationsController extends Controller
     public function get(Request $request)
     {
         $reservations_use_userid = DB::table('Reservations')->where('user_id', $request->user_id)->get();
-        if($reservations_use_userid){
-            $datetime = preg_split('/["\s]/', DB::table('Reservations')->where('user_id', $request->user_id)->select('day')->get());
+        foreach($reservations_use_userid as $reservation){
+            $datetime = preg_split('/["\s]/', $reservation->day);
             $params = [
                 'reservations'   => $reservations_use_userid,
-                'date' => $datetime[3],
-                'time' => $datetime[4]
+                'date' => $datetime[0],
+                'time' => $datetime[1]
             ];
         }
         return response()->json([
