@@ -62,7 +62,7 @@ class ReservationsController extends Controller
         DB::table('Reservations')->where('id', $request->reservationId)->where('user_id',$user_id)->delete();
         return response()->json([
             'message' => 'Reservation deleted successfully',
-            'dara' => $request->reservationId
+            'data' => $request
         ], 200);
     }
 }
