@@ -57,9 +57,9 @@ class ReservationsController extends Controller
         ], 200);
     }
 
-    public function delete(Request $request)
+    public function delete($reservation_id)
     {
-        DB::table('Reservations')->where('store_id', $request->store_id)->where('user_id', $request->user_id)->delete();
+        DB::table('Reservations')->where('id', $reservation_id)->delete();
         return response()->json([
             'message' => 'Reservation deleted successfully',
         ], 200);
