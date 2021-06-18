@@ -8,11 +8,13 @@ use Carbon\Carbon;
 
 class FavoritesController extends Controller
 {
-    public function post()
+    public function post($store_id,Request $request)
     {
         $COMMENT = "Favorites created successfully";
         $now = Carbon::now();
         $param = [
+            "user_id"  =>  $request->user_id,
+            "store_id"  =>  $store_id,
             "created_at" => $now,
             "updated_at" => $now
         ];
@@ -22,10 +24,18 @@ class FavoritesController extends Controller
             'data' => $param
         ], 200);
     }
-    public function delete(Request $request)
+    public function get($user_id)
+    {
+        $items = DB::table('Favorites')->where('user_id', $user_id)->get();
+        return response()->json([
+            'message' => 'Favorites got successfully',
+            'data' => $items
+        ], 200);
+    }
+    public function delete($user_id)
     {
         $COMMENT = "Favorites deleted successfully";
-        DB::table('favorites')->where('store_id', $request->store_id)->where('user_id', $request->user_id)->delete();
+        DB::table('favorites')->where('user_id',$user_id)->delete();
         return response()->json([
             'message' => $COMMENT,
         ], 200);
