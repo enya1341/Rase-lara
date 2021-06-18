@@ -27,11 +27,11 @@ class ReservationsController extends Controller
         ], 200);
     }
 
-    public function get(Request $request)
+    public function get($user_id)
     {
         $count = 1;
         $params =array();
-        $reservations_use_userid = DB::table('Reservations')->where('user_id', $request->user_id)->get();
+        $reservations_use_userid = DB::table('Reservations')->where('user_id', $user_id)->get();
         foreach($reservations_use_userid as $reservation){
             $datetime = preg_split('/["\s]/', $reservation->day);
             if($count==1){
