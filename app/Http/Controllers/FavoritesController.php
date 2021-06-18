@@ -8,13 +8,13 @@ use Carbon\Carbon;
 
 class FavoritesController extends Controller
 {
-    public function post($store_id,Request $request)
+    public function post($user_id,Request $request)
     {
         $COMMENT = "Favorites created successfully";
         $now = Carbon::now();
         $param = [
-            "user_id"  =>  $request->user_id,
-            "store_id"  =>  $store_id,
+            "user_id"  =>  $user_id,
+            "store_id"  =>  $request->store_id,
             "created_at" => $now,
             "updated_at" => $now
         ];

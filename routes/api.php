@@ -26,7 +26,7 @@ Route::get('/v1/stores', [StoresController::class, 'storeget'])->name('storeget'
 Route::get('/v1/{store_id}/stores', [StoresController::class, 'storedata'])->name('storedata');
 
 
-Route::post('/v1/{store_id}/favorites', [FavoritesController::class, 'post']);
+Route::post('/v1/{user_id}/favorites', [FavoritesController::class, 'post']);
 Route::delete('/v1/{user_id}/favorites', [FavoritesController::class, 'delete']);
 
 
