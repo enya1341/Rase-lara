@@ -32,10 +32,10 @@ class FavoritesController extends Controller
             'data' => $items
         ], 200);
     }
-    public function delete($user_id)
+    public function delete($user_id, Request $request)
     {
         $COMMENT = "Favorites deleted successfully";
-        DB::table('favorites')->where('user_id',$user_id)->delete();
+        DB::table('favorites')->where('store_id', $request->store_id)->where('user_id',$user_id)->delete();
         return response()->json([
             'message' => $COMMENT,
         ], 200);
