@@ -31,7 +31,7 @@ class ReservationsController extends Controller
     {
         $count = 1;
         $params =array();
-        $reservations_use_userid = DB::table('Reservations')->where('user_id', $user_id)->get();
+        $reservations_use_userid = DB::table('Reservations')->where('user_id', $user_id)->all();
         foreach($reservations_use_userid as $reservation){
             $datetime = preg_split('/["\s]/', $reservation->day);
             if($count==1){
