@@ -15,7 +15,7 @@ class ReservationsTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'user_id' => 1,
+            'user_id' => 3,
             'store_id' => 15,
             'day' => '2020-07-08 22:00:00',
             'number' => "2",
