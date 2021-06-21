@@ -29,25 +29,25 @@ class ReservationsController extends Controller
 
     public function get($user_id)
     {
-        $count = 1;
+        $count = 0;
         $params =array();
-        $reservations_use_userid = DB::table('Reservations')->where('user_id', $user_id)->all();
+        $reservations_use_userid = DB::table('Reservations')->where('user_id', $user_id)->get();
         foreach($reservations_use_userid as $reservation){
             $datetime = preg_split('/["\s]/', $reservation->day);
-            if($count==1){
-                $params = [
+            if($count==0){
+                $params[$count] = [
                     'reservations'   => $reservation,
                     'date' => $datetime[0],
                     'time' => $datetime[1]
                 ];
                 $count++;
             }else{
-                $params += array(
+                $params[$count] =[
                     'reservations' => $reservation,
                     'date' => $datetime[0],
                     'time' => $datetime[1]
-                );
-
+                ];
+                $count++;
             }
 
         }
