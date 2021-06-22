@@ -20,11 +20,20 @@ class ReservationsController extends Controller
             "created_at" => $now,
             "updated_at" => $now
         ];
-        DB::table('Reservations')->insert($param);
-        return response()->json([
-            'message' => 'Reservation created successfully',
-            'data' => $param
-        ], 200);
+        if($now < $request->day && 0 < $request->number){
+            DB::table('Reservations')->insert($param);
+            return response()->json([
+                'message' => 'Reservation created successfully',
+                'data' => $param,
+                'Error' => null
+            ], 200);
+        }else if($now >= $request->day && 0 >= $request->number){
+            return response()->json(['message' => '予約時間が既に過ぎているかつ予約人数が0人以下です', 'Error' => true ,'data' => 'dateもしくはtimeとnumber'], 200);
+        }else if($now >= $request->day){
+            return response()->json(['message' =>'予約時間が既に過ぎています', 'Error' =>true, 'data' => 'dateもしくはtime'], 200);
+        }else if(0 >= $request->number){
+            return response()->json(['message' => '予約人数が0人以下です', 'Error' =>true, 'data' => 'number'], 200);
+        }
     }
 
     public function get($user_id)
