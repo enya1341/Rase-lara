@@ -13,7 +13,6 @@ class LoginController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         $items = DB::table('users')->where('email', $email)->first();
-        
         if ($items && Hash::check($password, $items->password)) {
             return response()->json(['auth' => true], 200);
         } else {
