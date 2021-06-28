@@ -38,4 +38,13 @@ class ValuesController extends Controller
             'data' => $param,
         ], 200);
     }
+
+    public function get($store_id)
+    {
+        $items = DB::table('values')->where('store_id',$store_id)->get();
+        return response()->json([
+            'message' => 'Value got successfully',
+            'data' => $items
+        ], 200);
+    }
 }

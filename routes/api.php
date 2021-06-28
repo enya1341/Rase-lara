@@ -35,3 +35,4 @@ Route::put('/v1/{store_id}/reservations', [ReservationsController::class, 'put']
 Route::delete('/v1/{user_id}/reservations', [ReservationsController::class, 'delete']);
 
 Route::post('/v1/{store_id}/values', [ValuesController::class, 'post']);
+Route::get('/v1/{store_id}/values', [ValuesController::class, 'get']);
